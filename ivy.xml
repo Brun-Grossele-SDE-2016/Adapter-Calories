@@ -21,12 +21,31 @@
        xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
     <info
         organisation="introsde"
-        module="assigment02"
-        status="integration">
+        module="final-WeatherAdapter"
+        status="production">
 	</info>
-		<dependencies>
+	
+	<dependencies>
         <!-- JAX-WS bundle dependency --> 
-        <dependency org="com.sun.xml.ws" name="jaxws-rt" rev="2.2.10"/>
+        <dependency org="com.sun.xml.ws" name="jaxws-rt" rev="2.2.8"/>
+        <dependency org="javax.ws.rs" name="javax.ws.rs-api" rev="2.0"/>
+        
+        <dependency org="javax.xml.bind" name="jaxb-api" rev="2.2.11"/>
+        <dependency org="com.sun.xml.bind" name="jaxb-impl" rev="2.2.7"/>
+        <dependency org="com.sun.xml.bind" name="jaxb-xjc" rev="2.2.7"/>
+        <dependency org="javax.servlet" name="javax.servlet-api" rev="3.1.0"/>
+        
+        <dependency org="org.glassfish.jersey.core" name="jersey-common" rev="2.11"/>
+        <dependency org="org.glassfish.jersey.core" name="jersey-server" rev="2.11"/>
+        <dependency org="org.glassfish.jersey.core" name="jersey-client" rev="2.11"/>
+        <dependency org="org.glassfish.jersey.containers" name="jersey-container-servlet" rev="2.11"/>
+        <dependency org="org.glassfish.jersey.containers" name="jersey-container-jetty-http" rev="2.11"/>
+<!--        <dependency org="org.glassfish.jersey.containers" name="jersey-container-grizzly2-http" rev="2.11"/>
+    -->    
+        <dependency org="org.glassfish.jersey.containers" name="jersey-container-jdk-http" rev="2.11"/>
+	
+		<!-- Manage JSON -->
+		<dependency org="org.json" name="json" rev="20140107"/>
 	
         <!-- Other dependencies -->
         <dependency org="org.xerial" name="sqlite-jdbc" rev="3.7.2"/>
@@ -38,6 +57,4 @@
         <dependency org="joda-time" name="joda-time" rev="2.4"/>
         <dependency org="org.slf4j" name="slf4j-nop" rev="1.7.7"/>
     </dependencies>
-
-	
 </ivy-module>
