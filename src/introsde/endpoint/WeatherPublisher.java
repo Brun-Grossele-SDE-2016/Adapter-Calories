@@ -17,7 +17,7 @@ public class WeatherPublisher{
         {
             HOSTNAME = "localhost";
         }
-        String PORT = "9003";
+        String PORT = "9004";
         String BASE_URL = "/ws/weather";
 
         // We need this so the App will run on Heroku properly where we got the assigned port
