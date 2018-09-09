@@ -30,8 +30,9 @@ public class WeatherImpl implements Weather {
         
         try {
 	        String mediaType = MediaType.APPLICATION_JSON;
+	        String city_spaced = city.trim().replace(" ","%20");
 	        // http://api.openweathermap.org/data/2.5/weather?q=Budapest,hu&appid=bb044db77b4a7a0e490b9a942b181f4a&units=Metric
-	        String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=bb044db77b4a7a0e490b9a942b181f4a&units=Metric";
+	        String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city_spaced + "&appid=bb044db77b4a7a0e490b9a942b181f4a&units=Metric";
 	        System.out.println("Request url: " + url);
 			ClientConfig clientConfig = new ClientConfig();
 			Client client = ClientBuilder.newClient(clientConfig);
@@ -43,7 +44,7 @@ public class WeatherImpl implements Weather {
 				String output = r.readEntity(String.class);
 				JSONObject json_data = new JSONObject();
 				json_data = new JSONObject(output);
-				Integer temp = -100, wind = -100, rain = -100;
+				Integer temp = -100, wind = 0, clouds = 0;
 				try {
 					temp = json_data.getJSONObject("main").getInt("temp");
 				} catch (Exception e) {
@@ -55,11 +56,11 @@ public class WeatherImpl implements Weather {
 					System.out.println("Exception: " + e.toString());
 				}
 				try {
-					rain = json_data.getJSONObject("rain").getInt("3h");
+					clouds = json_data.getJSONObject("clouds").getInt("all");
 				} catch (Exception e) {
 					System.out.println("Exception: " + e.toString());
-				}
-				result = temp + "|" + wind + "|" + rain;
+				} 
+				result =  temp + "|" + wind + "|" + clouds ;
 				System.out.println(result);
 				System.out.println(output);
 				System.out.println("--> Request done OK");
